@@ -9,8 +9,6 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import java.util.ArrayList;
-import java.util.List;
 /**
  * @项目名称：wyait-manage
  * @包名：com.wyait.redis.controller
@@ -86,15 +84,15 @@ public class RedisCacheController {
 	public void add(){
 		System.out.println("================addRedis=================");
 		this.redisUtils.hmSet("redis","test:aaa","123456");
-		Cat cat = new Cat();
+		/*Cat cat = new Cat();
 		cat.setName("wyait");
 		cat.setAge(5);
 		cat.setMobile("1112222333354");
-		this.redisUtils.add("cat:1",cat);
-		this.redisUtils.set("catSet:1",cat);
-		this.redisUtils.zAdd("catZset:1",cat,100);
+		this.redisUtils.add("cat:1",cat.toString());
+		this.redisUtils.set("catSet:1",cat.toString());
+		this.redisUtils.zAdd("catZset:1",cat.toString(),100);
 		List<Cat> list = new ArrayList<Cat>();
 		list.add(cat);
-		this.redisUtils.lPush("catList:1",list);
+		this.redisUtils.lPush("catList:1",list);*/
 	}
 }
