@@ -29,10 +29,11 @@ public class RedisCacheController {
 
 	/**
 	 * 更新redis中的缓存数据
+	 * url：http://localhost:8080/redis/addCat?id=1，适用于GET方法
 	 * @param id 主键
 	 */
 	@CachePut(value = "catCache", key = "#root.caches[0].name + ':' + #id")
-	@RequestMapping(value = "/addCat", method = RequestMethod.POST)
+	@RequestMapping(value = "/addCat", method = RequestMethod.GET)
 	@ResponseBody
 	public Cat insert(@RequestParam("id") int id){
 		System.out.println("==========insert添加数据到redis中，请求参数：" + id);
@@ -62,7 +63,7 @@ public class RedisCacheController {
 	 * @param id 主键
 	 */
 	@CachePut(value = "catCache", key = "#root.caches[0].name + ':' + #id")
-	@RequestMapping(value = "/updateCat", method = RequestMethod.POST)
+	@RequestMapping(value = "/updateCat", method = RequestMethod.GET)
 	@ResponseBody
 	public Cat update(@RequestParam int id){
 		System.out.println("==========请求参数：" + id);
@@ -73,7 +74,7 @@ public class RedisCacheController {
 	 * @param id
 	 */
 	@CacheEvict(value="catCache")
-	@RequestMapping(value="/deleteCat",method = RequestMethod.POST)
+	@RequestMapping(value="/deleteCat",method = RequestMethod.GET)
 	public void deleteCat(@RequestParam("id") int id){
 		System.out.println("==============删除redis中数据====catId====" + id);
 		this.catService.deleteCat(id);
